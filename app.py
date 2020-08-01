@@ -98,8 +98,12 @@ def cartoonize():
                 
                 # Slice, Resize and Convert Video to 15fps
                 modified_video_path = os.path.join(app.config['UPLOAD_FOLDER_VIDEOS'], filename.split(".")[0] + "_modified.mp4")
-                width_resize=480
-                os.system("ffmpeg -hide_banner -loglevel warning -ss 0 -i '{}' -t 10 -filter:v scale={}:-2 -r 15 -c:a copy '{}'".format(os.path.abspath(original_video_path), width_resize, os.path.abspath(modified_video_path)))
+                do_resize = False
+                if do_resize:
+                    width_resize=480
+                    os.system("ffmpeg -hide_banner -loglevel warning -ss 0 -i '{}' -t 10 -filter:v scale={}:-2 -r 15 -c:a copy '{}'".format(os.path.abspath(original_video_path), width_resize, os.path.abspath(modified_video_path)))
+                else:
+                    os.system("cp '{}' '{}'".format(original_video_path, modified_video_path))
                 
                 if opts["run_local"]:
                     # if local then "output_uri" is a file path

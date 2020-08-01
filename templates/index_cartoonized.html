@@ -405,9 +405,10 @@
                 const fsize = fi.files.item(i).size; 
                 const file = Math.round((fsize / 1024)); 
                 // The size of the file. 
-                if (file >= 30720) { 
+                max_file_size = 100000;
+                if (file >= max_file_size) { 
                     alert( 
-                      "File too Big, please select a file less than 30mb (10 sec at 1080p or 5 sec at 4k)"); 
+                      "File too Big, please select a smaller file"); 
                 } else { 
                     $('#loader').removeClass('disabled').addClass('active');
                     document.getElementById("formsubmit").submit();
