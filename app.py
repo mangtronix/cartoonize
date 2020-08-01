@@ -13,6 +13,7 @@ sys.path.insert(0, './white_box_cartoonizer/')
 import cv2
 from flask import Flask, render_template, make_response, flash
 import flask
+from flask_ngrok import run_with_ngrok
 from PIL import Image
 import numpy as np
 
@@ -28,6 +29,9 @@ if not opts['run_local']:
     import Algorithmia
 
 app = Flask(__name__)
+
+# Inject code into the run method so that app.run goes through ngrok
+run_with_ngrok(app)
 
 app.config['UPLOAD_FOLDER_VIDEOS'] = 'static/uploaded_videos'
 app.config['CARTOONIZED_FOLDER'] = 'static/cartoonized_images'
@@ -135,4 +139,5 @@ def cartoonize():
         return render_template("index_cartoonized.html")
 
 if __name__ == "__main__":
-    app.run(debug=False, host='0.0.0.0', port=int(os.environ.get('PORT', 8080)))
+    #app.run(debug=False, host='0.0.0.0', port=int(os.environ.get('PORT', 8080)))
+    app.run()
