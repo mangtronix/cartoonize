@@ -1,3 +1,22 @@
+# Cartoonizer on Colab
+
+CartoonGAN web app modified by Mangtronix to run on Google Colab.
+
+To run the web app on Google Colab, simply open this link:
+
+https://colab.research.google.com/github/mangtronix/cartoonize/blob/master/Cartoonize_Colab.ipynb
+
+Enable GPU using Runtime->Change runtime type
+
+Start the code using Runtime->Run all
+
+The URL to the web app will be printed in the final cell. Click on the URL to access the web app. For example (your URL will be different):
+
+```Running on http://b20379fdb887.ngrok.io```
+
+
+# ORIGINAL README 
+
 # Cartoonizer
 
 > Convert images and videos into a cartoon!
